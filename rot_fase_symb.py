@@ -13,28 +13,30 @@ from IPython.display import display, Math
 Vi, Vo, Vx = sp.symbols("Vi, Vo, Vx")
 G1, G2, Y1, Y2, R, C = sp.symbols("G1, G2, Y1, Y2, R, C")
 
-aa = sp.solve([ 
+aa = sp.solve([  #despeja Vi y Vo en base a las ecuaciones (Me quedan en funcion de Vx)
                 Vx*(Y1+Y2)-Vi*Y1, 
                 Vx*(G1+G2) -Vi*G1 -Vo*G2
                 ], 
                 [Vi, Vo])
 
-transf_func = aa[Vo]/aa[Vi]
+transf_func = aa[Vo]/aa[Vi] #Aca defino mi transf_funct como el cociente entre Vo y Vi (Vo/Vi). Tambien es simbolica
 
 
 # Ejercicio 7.a: Pasatodo de 1er orden
 
-tf7a = transf_func.subs(Y1, s*C)
+tf7a = transf_func.subs(Y1, s*C) #reemplazo Y1 e Y2 por sus respectivos valores simbolicos
 tf7a = tf7a.subs(Y2, 1/R)
 
-num, den = sp.fraction(sp.simplify(sp.expand(tf7a)))
+num, den = sp.fraction(sp.simplify(sp.expand(tf7a)))  #simplificamos y separamos numerador y denominador
+
 
 num = sp.Poly(num,s)
 den = sp.Poly(den,s)
 
+
 k = num.LC() / den.LC()
 
-num = num.monic()
+num = num.monic() #hacemos que el numerador y denominador sean monicos
 den = den.monic()
 
 den_coeffs = den.all_coeffs()
