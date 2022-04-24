@@ -34,7 +34,7 @@ num = sp.Poly(num,s)
 den = sp.Poly(den,s)
 
 
-k = num.LC() / den.LC()
+k = sp.simplify(num.LC() / den.LC()) #obtenemos la constante, y la simplificamos
 
 num = num.monic() #hacemos que el numerador y denominador sean monicos
 den = den.monic()
