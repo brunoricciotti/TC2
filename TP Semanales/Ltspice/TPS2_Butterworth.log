@@ -1,0 +1,28 @@
+Circuit: * C:\Users\bruno\Documents\GitHub\TC2\TP Semanales\Ltspice\TPS2_Butterworth.asc
+
+Number of points per decade reduced from 100000 to 27510.
+Ignoring empty pin current: Ix(u1:1)
+Ignoring empty pin current: Ix(u1:2)
+Ignoring empty pin current: Ix(u2:1)
+Ignoring empty pin current: Ix(u2:2)
+Ignoring empty pin current: Ix(u3:1)
+Ignoring empty pin current: Ix(u3:2)
+.step k=1
+.step k=5
+.step k=10
+
+Date: Tue May 03 18:45:26 2022
+Total elapsed time: 0.450 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 0
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 8
+fillins = 8
+solver = Normal
+
