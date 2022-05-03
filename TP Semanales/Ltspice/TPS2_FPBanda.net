@@ -1,0 +1,17 @@
+* C:\Users\bruno\Documents\GitHub\TC2\TP Semanales\Ltspice\TPS2_FPBanda.asc
+V1 Vi 0 AC 1
+R1 N001 Vi 6285
+R2 VB N001 6285
+R3 N005 VB 419
+R4 N002 N001 419
+R5 N004 N003 10k
+R6 N002 N004 10k
+C1 VB N001 0.01µ
+C2 N003 N005 0.01µ
+XU1 N001 0 VB opamp Aol=100K GBW=10Meg
+XU2 0 N005 N002 opamp Aol=100K GBW=10Meg
+XU3 N004 0 N003 opamp Aol=100K GBW=10Meg
+.inc opamp.sub
+.ac dec 1000 10k 100k
+.backanno
+.end
