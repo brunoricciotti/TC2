@@ -1,0 +1,31 @@
+Circuit: * C:\Users\bruno\Documents\GitHub\TC2\TP Semanales\TS4\Ltspice\Draft2.asc
+
+WARNING: Node X3:V2 is floating.
+WARNING: Node X4:V2 is floating.
+WARNING: Node N005 is floating.
+
+WARNING: Less than two connections to node X3:V2.  This node is used by C:X3:2.
+WARNING: Less than two connections to node X4:V2.  This node is used by C:X4:2.
+WARNING: Less than two connections to node N005.  This node is used by C4.
+Direct Newton iteration for .op point succeeded.
+Ignoring empty pin current: Ix(x3:v-)
+Ignoring empty pin current: Ix(x4:v-)
+Ignoring empty pin current: Ix(x3:v-)
+Ignoring empty pin current: Ix(x4:v-)
+
+Date: Fri May 27 21:43:40 2022
+Total elapsed time: 0.031 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 3
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 9
+fillins = 0
+solver = Normal
+Matrix Compiler1:      19 opcodes
+Matrix Compiler2: 533 bytes object code size
