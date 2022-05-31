@@ -1,0 +1,22 @@
+Circuit: * C:\Users\bruno\OneDrive\Documentos\TC2\GitHub\TC2\TPS\Ltspice\tp2_ej5_norm.asc
+
+Ignoring empty pin current: Ix(u1:1)
+Ignoring empty pin current: Ix(u1:2)
+Ignoring empty pin current: Ix(u2:1)
+Ignoring empty pin current: Ix(u2:2)
+
+Date: Mon May 30 21:37:38 2022
+Total elapsed time: 0.030 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 0
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 9
+fillins = 1
+solver = Normal
+
