@@ -1,0 +1,21 @@
+Circuit: * C:\Users\bruno\Documents\GitHub\TC2\TP Semanales\TS5\LTspice\Draft2.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Jun 09 14:21:05 2022
+Total elapsed time: 0.011 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2057
+traniter = 2054
+tranpoints = 1028
+accept = 1028
+rejected = 0
+matrix size = 3
+fillins = 0
+solver = Normal
+Matrix Compiler1: 86 bytes object code size  0.0/0.0/[0.0]
+Matrix Compiler2:      15 opcodes  0.0/[0.0]/0.0
+
