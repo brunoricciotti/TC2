@@ -12,11 +12,11 @@ from sympy.abc import s
 from IPython.display import display, Math
 
 Vi, Vo, VA, VB = sp.symbols("Vi, Vo, VA, VB")
-C1,C2,L1,L2 = sp.symbols("C1,C2,L1,L2")
+C,R,L1,L2 = sp.symbols("C,R,L1,L2")
 
-Ya = sp.Matrix([[s*C1 + 1/(s*L1),-1/(s*L1)],[-1/(s*L1),s*C2 + 1/(s*L1)]])
+Yb = sp.Matrix([[s*C + 1/(s*L2),-1/(s*L2)],[-1/(s*L2),1/R + 1/(s*L2)]])
 
-Yb = sp.Matrix([[1/(s*L2),-1/(s*L2)],[-1/(s*L2),1/(s*L2)]])
+Ya = sp.Matrix([[1/(s*L1),-1/(s*L1)],[-1/(s*L1),1/(s*L1)]])
 
 Ta = sp.Matrix([[-Ya[3]/Ya[2],-1/Ya[2]],[-Ya.det()/Ya[2],-Ya[0]/Ya[2]]])
 
