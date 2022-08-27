@@ -10,12 +10,11 @@ import numpy as np
 import scipy.signal as sig
 from splane import analyze_sys, pretty_print_bicuad_omegayq
 
-k= 1
+w = 2*np.pi*10000
 
-num = np.array([k*1,7,k*6]) 
-den = np.array([1,5, 6])
+num = np.array([15]) 
+den = np.array([1,6,15,15])
 
-pretty_print_bicuad_omegayq(num,den)
 
 tf = sig.TransferFunction(num,den)
     
