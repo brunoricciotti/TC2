@@ -1,0 +1,22 @@
+Circuit: * D:\Documentos\TC2\TC2\TP Semanales\TS8\LTspice\Draft1.asc
+
+WARNING: Less than two connections to node NC_01.  This node is used by V6.
+Direct Newton iteration for .op point succeeded.
+
+Date: Mon Sep 05 00:50:23 2022
+Total elapsed time: 0.030 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 5045
+traniter = 5034
+tranpoints = 2518
+accept = 2518
+rejected = 0
+matrix size = 45
+fillins = 40
+solver = Normal
+Matrix Compiler1: 3.82 KB object code size  0.7/0.3/[0.2]
+Matrix Compiler2: 4.12 KB object code size  0.2/0.4/[0.2]
+
