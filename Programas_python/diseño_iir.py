@@ -17,7 +17,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import scipy.io as sio
-from splane import pzmap, GroupDelay, bodePlot, plot_plantilla
+from splane import pzmap, GroupDelay, bodePlot, plot_plantilla, analyze_sys
 from scipy.signal import TransferFunction
 
 
@@ -51,6 +51,8 @@ gains = 10**(gains/20)
 
 bp_sos_butter = sig.iirdesign([frecs[2],frecs[3]],[frecs[1],frecs[4]],ripple,atenuacion,analog=False,ftype='butter',output='sos')
 
+num,den = sig.iirdesign([frecs[2],frecs[3]],[frecs[1],frecs[4]],ripple,atenuacion,analog=False,ftype='butter',output='ba')
+
 w  = np.append(np.logspace(-1, 0.8, 250), np.logspace(0.9, 1.6, 250) )
 w  = np.append(w, np.linspace(110, nyq_frec, 100, endpoint=True) ) / nyq_frec * np.pi
 
@@ -64,3 +66,8 @@ plt.plot(w, 20*np.log10(np.abs(H[1])+1e-12), label='IIR-Butter {:d}'.format(bp_s
   
 
 plot_plantilla(filter_type = 'bandpass', fpass = frecs[[2, 3]]* nyq_frec, ripple = ripple , fstop = frecs[ [1, 4] ]* nyq_frec, attenuation = atenuacion, fs = fs)
+
+
+my_dig_filter = sig.TransferFunction(num,den,dt = 1/fs) #al indicar dt le decimos a la funcion que la transferencia es en Z
+analyze_sys(my_dig_filter,'filtro',digital = False)
+
