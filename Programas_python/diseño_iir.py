@@ -56,18 +56,19 @@ num,den = sig.iirdesign([frecs[2],frecs[3]],[frecs[1],frecs[4]],ripple,atenuacio
 w  = np.append(np.logspace(-1, 0.8, 250), np.logspace(0.9, 1.6, 250) )
 w  = np.append(w, np.linspace(110, nyq_frec, 100, endpoint=True) ) / nyq_frec * np.pi
 
-H = sig.sosfreqz(bp_sos_butter, w)
+w = [*range(0,1, )]
+H = sig.sosfreqz(bp_sos_butter, 2048)
 
-w = w / np.pi * nyq_frec
+# w = w / np.pi * nyq_frec
 
-plt.figure()
+# plt.figure()
 
-plt.plot(w, 20*np.log10(np.abs(H[1])+1e-12), label='IIR-Butter {:d}'.format(bp_sos_butter.shape[0]*2) )
+# plt.plot(w, 20*np.log10(np.abs(H[1])+1e-12), label='IIR-Butter {:d}'.format(bp_sos_butter.shape[0]*2) )
   
 
-plot_plantilla(filter_type = 'bandpass', fpass = frecs[[2, 3]]* nyq_frec, ripple = ripple , fstop = frecs[ [1, 4] ]* nyq_frec, attenuation = atenuacion, fs = fs)
+# plot_plantilla(filter_type = 'bandpass', fpass = frecs[[2, 3]]* nyq_frec, ripple = ripple , fstop = frecs[ [1, 4] ]* nyq_frec, attenuation = atenuacion, fs = fs)
 
 
-my_dig_filter = sig.TransferFunction(num,den,dt = 1/fs) #al indicar dt le decimos a la funcion que la transferencia es en Z
-analyze_sys(my_dig_filter,'filtro',digital = False)
+# my_dig_filter = sig.TransferFunction(num,den,dt = 1/fs) #al indicar dt le decimos a la funcion que la transferencia es en Z
+# analyze_sys(my_dig_filter,'filtro',digital = False)
 
