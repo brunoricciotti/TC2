@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import scipy.io as sio
 from splane import pzmap, GroupDelay, bodePlot, plot_plantilla, analyze_sys
 from scipy.signal import TransferFunction
-
+from cmath import phase
 
 fig_sz_x = 10
 fig_sz_y = 7
@@ -53,10 +53,15 @@ bp_sos_butter = sig.iirdesign([frecs[2],frecs[3]],[frecs[1],frecs[4]],ripple,ate
 
 num,den = sig.iirdesign([frecs[2],frecs[3]],[frecs[1],frecs[4]],ripple,atenuacion,analog=False,ftype='butter',output='ba')
 
-w  = np.append(np.logspace(-1, 0.8, 250), np.logspace(0.9, 1.6, 250) )
-w  = np.append(w, np.linspace(110, nyq_frec, 100, endpoint=True) ) / nyq_frec * np.pi
+#w  = np.append(np.logspace(-1, 0.8, 250), np.logspace(0.9, 1.6, 250) )
+#w  = np.append(w, np.linspace(110, nyq_frec, 100, endpoint=True) ) / nyq_frec * np.pi
+w = np.linspace(0,np.pi,2500)
 
 H = sig.sosfreqz(bp_sos_butter, w)
+
+modulo = abs(H[1])
+
+fase = np.array(list(map(phase, H[1])))
 
 w = w / np.pi * nyq_frec
 
@@ -67,7 +72,9 @@ plt.plot(w, 20*np.log10(np.abs(H[1])+1e-12), label='IIR-Butter {:d}'.format(bp_s
 
 plot_plantilla(filter_type = 'bandpass', fpass = frecs[[2, 3]]* nyq_frec, ripple = ripple , fstop = frecs[ [1, 4] ]* nyq_frec, attenuation = atenuacion, fs = fs)
 
+plt.plot(w, fase)
 
 my_dig_filter = sig.TransferFunction(num,den,dt = 1/fs) #al indicar dt le decimos a la funcion que la transferencia es en Z
-analyze_sys(my_dig_filter,'filtro',digital = False)
+
+pzmap(my_dig_filter)
 
