@@ -8,8 +8,10 @@ Created on Sat Sep 10 16:34:01 2022
 from scipy import signal as sig
 import matplotlib.pyplot as plt
 import numpy as np
+from cmath import phase
+from splane import pzmap, GroupDelay, bodePlot, plot_plantilla, analyze_sys
 
-cant_coef = 1111
+cant_coef = 5001
 
 #####################
 ## tipos de filtro ##
@@ -66,15 +68,18 @@ win_name = 'blackmanharris'
 
 # FIR design
 num = sig.firwin2(cant_coef, frecs, gains , window=win_name )
+#num = sig.remez(cant_coef, frecs,gains,fs=fs)
 den = 1.0
 
-
-ww, hh = sig.freqz(num, den)
+w = np.linspace(0,np.pi,1000)
+ww, hh = sig.freqz(num, den,w)
 ww = ww / np.pi
 
 plt.figure()
 
 plt.plot(ww, 20 * np.log10(abs(hh)))
+
+fase = np.array(list(map(phase, hh)))
 
 
 plt.plot(frecs, 20*np.log10(gains), 'rx', label='plantilla' )
@@ -91,10 +96,14 @@ plt.show()
 
 plt.figure()
 
-plt.plot(ww, np.unwrap(np.angle(hh)) )
+plt.plot(ww, fase )
 
 plt.title('FIR designed by window method')
 plt.xlabel('Frequencia normalizada')
 plt.ylabel('Fase [rad]')
 plt.grid(which='both', axis='both')
 plt.show()
+
+my_dig_filter = sig.TransferFunction(num,den,dt = 1/fs) #al indicar dt le decimos a la funcion que la transferencia es en Z
+
+GroupDelay(my_dig_filter)
